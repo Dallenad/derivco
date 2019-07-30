@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.15.1/dist/phaser-arcade-physics.min.js"></script>
+</head>
+<body>
+
+    <script>
+    let config = {
+        type: Phaser.AUTO,
+        width: 800,
+        height: 600,
+        backgroundColor: '#ffffff',
+        scene: {
+            preload: preload,
+            create: create
+        }
+    };
+
+    let game = new Phaser.Game(config);
+    let stripLeft, stripCenter, stripRight;
+
+    function preload ()
+    {
+        this.load.setBaseURL('.');
+
+        this.load.image('strip', 'images/strip.png')
+        this.load.image('slots', 'images/slots.png')
+    }
+
+    function create ()
+    {
+        let slotView = this.add.container(400, 300);
+        
+        stripLeft = this.add.tileSprite(-148, 0, 141, 363, 'strip');
+        stripCenter = this.add.tileSprite(0, 0, 141, 363, 'strip');
+        stripRight = this.add.tileSprite(148, 0, 141, 363, 'strip');
+
+        let slots = this.add.sprite(0, 0, 'slots');
+
+        slotView.add([stripLeft, stripCenter, stripRight, slots]);
+        
+        this.tweens.add({
+            targets: stripLeft,
+            tilePositionY: { value: -1210, duration: 2000, ease: 'Power1'}
+        })
+    }
+    </script>
+
+</body>
+</html>
