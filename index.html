@@ -2,50 +2,137 @@
 <html>
 <head>
     <script src="https://cdn.jsdelivr.net/npm/phaser@3.15.1/dist/phaser-arcade-physics.min.js"></script>
+    <script src="js/game.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Cinzel&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
+    <!-- UI for Manual Mode -->
+    
+    <section id="game-section">
+        <h2><label>Manual Mode <input type="checkbox" name="manual" value="manual-mode" id="manual"></label></h2>
 
-    <script>
-    let config = {
-        type: Phaser.AUTO,
-        width: 800,
-        height: 600,
-        backgroundColor: '#ffffff',
-        scene: {
-            preload: preload,
-            create: create
-        }
-    };
+        <!-- Balance input -->
 
-    let game = new Phaser.Game(config);
-    let stripLeft, stripCenter, stripRight;
+        <div id="balance-manual">
+            Balance: <input type="number" id="balance-input" min="1" max="5000" value="10">
+        </div>
 
-    function preload ()
-    {
-        this.load.setBaseURL('.');
+        <!-- Reel results -->
 
-        this.load.image('strip', 'images/strip.png')
-        this.load.image('slots', 'images/slots.png')
-    }
+        <div class="reel" id="reel-left">
+            <form class="position" id="position-left">
+                <h3>Left Reel</h3>
+                <label>
+                    <input type="radio" name="position-left" value="top"> Top
+                </label><br>
+                <label>
+                    <input type="radio" name="position-left" value="center" checked> Center
+                </label><br>
+                <label>
+                    <input type="radio" name="position-left" value="bottom"> Bottom
+                </label>
+            </form>
 
-    function create ()
-    {
-        let slotView = this.add.container(400, 300);
-        
-        stripLeft = this.add.tileSprite(-148, 0, 141, 363, 'strip');
-        stripCenter = this.add.tileSprite(0, 0, 141, 363, 'strip');
-        stripRight = this.add.tileSprite(148, 0, 141, 363, 'strip');
+            <form class="icons" id="icon-left">
+                <label>
+                    <input type="radio" name="icon-left" value="0" checked class="icon">
+                    <img src="images/BAR.png" width="auto" height="40" class="icon-image">
+                </label><br>
+                <label>
+                    <input type="radio" name="icon-left" value="2">
+                    <img src="images/2xBAR.png" width="auto" height="40" class="icon-image">
+                </label><br>
+                <label>
+                    <input type="radio" name="icon-left" value="8">
+                    <img src="images/3xBAR.png" width="auto" height="40" class="icon-image">
+                </label><br>
+                <label>
+                    <input type="radio" name="icon-left" value="4">
+                    <img src="images/7.png" width="auto" height="40" class="icon-image">
+                </label><br>
+                <label>
+                    <input type="radio" name="icon-left" value="6">
+                    <img src="images/Cherry.png" width="auto" height="40" class="icon-image">
+                </label>
+            </form>
+        </div>
 
-        let slots = this.add.sprite(0, 0, 'slots');
+        <div class="reel" id="reel-center">
+            <form class="position" id="position-center">
+                <h3>Center Reel</h3>
+                <label>
+                    <input type="radio" name="position-center" value="top"> Top
+                </label><br>
+                <label>
+                    <input type="radio" name="position-center" value="center" checked> Center
+                </label><br>
+                <label>
+                    <input type="radio" name="position-center" value="bottom"> Bottom
+                </label>
+            </form>
 
-        slotView.add([stripLeft, stripCenter, stripRight, slots]);
-        
-        this.tweens.add({
-            targets: stripLeft,
-            tilePositionY: { value: -1210, duration: 2000, ease: 'Power1'}
-        })
-    }
-    </script>
+            <form class="icons" id="icon-center">
+                <label>
+                    <input type="radio" name="icon-center" value="0" checked class="icon">
+                    <img src="images/BAR.png" width="auto" height="40" class="icon-image">
+                </label><br>
+                <label>
+                    <input type="radio" name="icon-center" value="2">
+                    <img src="images/2xBAR.png" width="auto" height="40" class="icon-image">
+                </label><br>
+                <label>
+                    <input type="radio" name="icon-center" value="8">
+                    <img src="images/3xBAR.png" width="auto" height="40" class="icon-image">
+                </label><br>
+                <label>
+                    <input type="radio" name="icon-center" value="4">
+                    <img src="images/7.png" width="auto" height="40" class="icon-image">
+                </label><br>
+                <label>
+                    <input type="radio" name="icon-center" value="6">
+                    <img src="images/Cherry.png" width="auto" height="40" class="icon-image">
+                </label>
+            </form>
+        </div>
 
+        <div class="reel" id="reel-right">
+            <form class="position" id="position-right">
+                <h3>Right Reel</h3>
+                <label>
+                    <input type="radio" name="position-right" value="top"> Top
+                </label><br>
+                <label>
+                    <input type="radio" name="position-right" value="center" checked> Center
+                </label><br>
+                <label>
+                    <input type="radio" name="position-right" value="bottom"> Bottom
+                </label>
+            </form>
+
+            <form class="icons" id="icon-right">
+                <label>
+                    <input type="radio" name="icon-right" value="0" checked class="icon">
+                    <img src="images/BAR.png" width="auto" height="40" class="icon-image">
+                </label><br>
+                <label>
+                    <input type="radio" name="icon-right" value="2">
+                    <img src="images/2xBAR.png" width="auto" height="40" class="icon-image">
+                </label><br>
+                <label>
+                    <input type="radio" name="icon-right" value="8">
+                    <img src="images/3xBAR.png" width="auto" height="40" class="icon-image">
+                </label><br>
+                <label>
+                    <input type="radio" name="icon-right" value="4">
+                    <img src="images/7.png" width="auto" height="40" class="icon-image">
+                </label><br>
+                <label>
+                    <input type="radio" name="icon-right" value="6">
+                    <img src="images/Cherry.png" width="auto" height="40" class="icon-image">
+                </label>
+            </form>
+        </div>
+    </section>
 </body>
 </html>

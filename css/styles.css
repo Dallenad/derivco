@@ -1,0 +1,49 @@
+section {
+    cursor: default;
+}
+
+h2 {
+    text-align: center;
+}
+
+label {
+    cursor: pointer;
+}
+
+#game-section {
+    position: absolute;
+    top: 330px;
+    color: white;
+    font-family: 'Cinzel';
+}
+
+#balance-manual {
+    position: absolute;
+    left: 700px;
+    top: 50px;
+}
+
+.icon, .icon-image {
+    vertical-align: middle;
+}
+
+.reel, .position, .icons {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.reel {
+    padding: 0 20px;
+}
+
+#reel-left {
+    background-color: rgba(255, 0, 0, 0.3);
+}
+
+#reel-center {
+    background-color: rgba(255, 0, 255, 0.3);
+}
+
+#reel-right {
+    background-color: rgba(0, 0, 255, 0.3);
+}
