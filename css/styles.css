@@ -34,7 +34,7 @@ label {
     font-family: 'Cinzel';
 }
 
-#balance-manual {
+#balance-fixed {
     position: absolute;
     left: 700px;
     top: 50px;

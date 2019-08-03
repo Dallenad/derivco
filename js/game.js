@@ -18,15 +18,15 @@ let stripLeft,
     stripRight,
     spinButton,
     balanceInput,
-    manualInput,
+    fixedInput,
     icons,
     positions,
     currentBalance,
     shadow;
-let manual = false; //Manual Mode
+let fixed = false; //Fixed Mode
 let prevValues = [0, 0, 0];
 let values = [0, 0, 0];
-let iconHeight = 121; //Manual Mode UI icons
+let iconHeight = 121; //Fixed Mode UI icons
 let duration = [2000, 2500, 3000]; //Duration of each reel's spin
 let spinning = false;
 let balance = 10;
@@ -40,7 +40,7 @@ function preload ()
 
     this.load.image('strip', 'images/strip.png')
     this.load.image('slots', 'images/slots.png')
-    this.load.image('manual', 'images/manual.png')
+    this.load.image('fixed', 'images/fixed.png')
     this.load.image('white', 'images/white.png')
     this.load.spritesheet('spin', 'images/spin.png', {
         frameWidth: 114,
@@ -57,8 +57,8 @@ function create ()
     let slotView = this.add.container(330, 170);
     let slotBG = this.add.tileSprite(0, 0, 450, 400, 'white');
     let slots = this.add.sprite(0, 0, 'slots');
-    let manualMode = this.add.container(0, 350);
-    let manualBG = this.add.tileSprite(400, 120, 800, 270, 'manual');
+    let fixedMode = this.add.container(0, 350);
+    let fixedBG = this.add.tileSprite(400, 120, 800, 270, 'fixed');
 
     currentBalance = this.add.text(650, 20, 'Balance: ' + balance, { fontFamily: 'Cinzel' });
     stripLeft = this.add.tileSprite(-148, 0, 141, iconHeight * 3, 'strip');
@@ -68,7 +68,7 @@ function create ()
     spinButton = this.add.sprite(700, 200, 'spin');
 
     slotView.add([slotBG, stripLeft, stripCenter, stripRight, slots]);
-    manualMode.add([manualBG]);
+    fixedMode.add([fixedBG]);
     
     //Spin button event listeners
 
@@ -83,19 +83,19 @@ function create ()
     balanceInput.value = balance;
 
     balanceInput.oninput = () => {
-        balance = balanceInput.value;
+        balance = parseInt(balanceInput.value);
         currentBalance.setText('Balance: ' + balanceText);
     }
 
-    //Enabling/disabling Manual Mode
+    //Enabling/disabling Fixed Mode
 
-    manualInput = document.getElementById('manual');
-    manualInput.checked = manual;
-    balanceInput.disabled = !manual;
+    fixedInput = document.getElementById('fixed');
+    fixedInput.checked = fixed;
+    balanceInput.disabled = !fixed;
 
-    manualInput.oninput = () => {
-        manual = !manual;
-        balanceInput.disabled = !manual;
+    fixedInput.oninput = () => {
+        fixed = !fixed;
+        balanceInput.disabled = !fixed;
     }
 
     //Determining whether the Spin button is interactive
@@ -121,9 +121,9 @@ function create ()
 
 function spin ()
 {
-    //Behavior according to whether Manual Mode is enabled
+    //Behavior according to whether Fixed Mode is enabled
 
-    if (!manual)
+    if (!fixed)
     {
         values = [parseInt(Math.random() * 10), parseInt(Math.random() * 10), parseInt(Math.random() * 10)];
     }
