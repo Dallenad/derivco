@@ -7,10 +7,11 @@
     <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
+
     <!-- UI for Manual Mode -->
-    
+
     <section id="game-section">
-        <h2><label>Manual Mode <input type="checkbox" name="manual" value="manual-mode" id="manual"></label></h2>
+        <h2><label id="manual"><input type="checkbox" name="manual" value="manual-mode"><span>Manual Mode</span></label></h2>
 
         <!-- Balance input -->
 
@@ -24,13 +25,13 @@
             <form class="position" id="position-left">
                 <h3>Left Reel</h3>
                 <label>
-                    <input type="radio" name="position-left" value="top"> Top
+                    <input type="radio" name="position-left" value="top"> <span>Top</span>
                 </label><br>
                 <label>
-                    <input type="radio" name="position-left" value="center" checked> Center
+                    <input type="radio" name="position-left" value="center" checked> <span>Center</span>
                 </label><br>
                 <label>
-                    <input type="radio" name="position-left" value="bottom"> Bottom
+                    <input type="radio" name="position-left" value="bottom"> <span>Bottom</span>
                 </label>
             </form>
 
@@ -62,13 +63,13 @@
             <form class="position" id="position-center">
                 <h3>Center Reel</h3>
                 <label>
-                    <input type="radio" name="position-center" value="top"> Top
+                    <input type="radio" name="position-center" value="top"> <span>Top</span>
                 </label><br>
                 <label>
-                    <input type="radio" name="position-center" value="center" checked> Center
+                    <input type="radio" name="position-center" value="center" checked> <span>Center</span>
                 </label><br>
                 <label>
-                    <input type="radio" name="position-center" value="bottom"> Bottom
+                    <input type="radio" name="position-center" value="bottom"> <span>Bottom</span>
                 </label>
             </form>
 
@@ -100,13 +101,13 @@
             <form class="position" id="position-right">
                 <h3>Right Reel</h3>
                 <label>
-                    <input type="radio" name="position-right" value="top"> Top
+                    <input type="radio" name="position-right" value="top"> <span>Top</span>
                 </label><br>
                 <label>
-                    <input type="radio" name="position-right" value="center" checked> Center
+                    <input type="radio" name="position-right" value="center" checked> <span>Center</span>
                 </label><br>
                 <label>
-                    <input type="radio" name="position-right" value="bottom"> Bottom
+                    <input type="radio" name="position-right" value="bottom"> <span>Bottom</span>
                 </label>
             </form>
 
@@ -133,6 +134,7 @@
                 </label>
             </form>
         </div>
+        <div id="shadow"></div>
     </section>
 </body>
 </html>

@@ -21,7 +21,8 @@ let stripLeft,
     manualInput,
     icons,
     positions,
-    currentBalance;
+    currentBalance,
+    shadow;
 let manual = false; //Manual Mode
 let prevValues = [0, 0, 0];
 let values = [0, 0, 0];
@@ -99,6 +100,7 @@ function create ()
 
     //Determining whether the Spin button is interactive
 
+    shadow = document.getElementById("shadow");
     this.input.on('gameobjectup', function (pointer, spinButton)
     {
         if (!spinning && balance > 0)
@@ -107,6 +109,7 @@ function create ()
             spinButton.setFrame(1);
             spinButton.emit('clicked', spinButton);
             spinning = true;
+            shadow.style.visibility = "visible";
         }
     }, this);
 
@@ -199,8 +202,9 @@ function stopSpin ()
 
     spinning = false;
     spinButton.setFrame(0);
+    shadow.style.visibility = "hidden";
     prevValues = values.slice(0, 3);
-    console.log(values);
+    //console.log(values);
 
     //Reward the player accordingly
 
